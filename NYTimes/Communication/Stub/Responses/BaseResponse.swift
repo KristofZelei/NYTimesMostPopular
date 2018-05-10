@@ -7,18 +7,11 @@
 //
 
 import Foundation
-import ObjectMapper
 
-class BaseResponse: NSObject, Mappable {
+class BaseResponse: NSObject {
 
     override init() {
         super.init()
     }
 
-    required init?(map: Map) {
-    }
-
-    func mapping(map: Map) {
-
-    }
 }

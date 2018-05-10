@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 import AlamofireImage
-import ObjectMapper
 
 class CommunicationService : CommunicationServiceProtocol {
 
@@ -33,48 +32,7 @@ class CommunicationService : CommunicationServiceProtocol {
                 let jsonDecoder = JSONDecoder()
                 let responseModel = try! jsonDecoder.decode(FetchMostViewedResult.self, from: response.data!)
                 completion(responseModel)
-                //completion(Mapper<FetchMostViewedResult>().map(JSONObject:response.result.value))
             }
         }
     }
-//
-//    func fetchIngredients(completion: @escaping ([IngredientDTO]) -> Void) {
-//        guard let url = URL(string: baseURL + "ozt3z") else {
-//            completion([IngredientDTO]())
-//            return
-//        }
-//        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-//            guard response.result.isSuccess else {
-//                completion([IngredientDTO]())
-//                return
-//            }
-//            if response.data != nil {
-//                completion(Mapper<IngredientDTO>().mapArray(JSONObject:response.result.value)!)
-//            }
-//        }
-//    }
-//
-//    func fetchDetails(completion: @escaping ([DetailDTO]) -> Void) {
-//        guard let url = URL(string: baseURL + "150da7") else {
-//            completion([DetailDTO]())
-//            return
-//        }
-//        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-//            guard response.result.isSuccess else {
-//                completion([DetailDTO]())
-//                return
-//            }
-//            if response.data != nil {
-//                completion(Mapper<DetailDTO>().mapArray(JSONObject:response.result.value)!)
-//            }
-//        }
-//    }
-//
-//    func checkout(request: CheckoutRequest, completion: @escaping () -> Void) {
-//        if let jsonString = Mapper().toJSONString(request) {
-//            Alamofire.request("http://httpbin.org/post", method: .post, parameters: [:], encoding: jsonString, headers: [:])
-//
-//        }
-//        completion()
-//    }
 }
