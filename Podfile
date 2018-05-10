@@ -10,7 +10,6 @@ target 'NYTimes' do
     pod 'AlamofireImage'
     pod 'SnapKit'
     pod 'SwiftLint'
-    pod 'ObjectMapper'
 
   target 'NYTimesTests' do
     inherit! :search_paths
