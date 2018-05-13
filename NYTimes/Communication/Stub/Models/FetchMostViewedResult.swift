@@ -16,7 +16,7 @@ class FetchMostViewedResult : NSObject, Codable {
 	var status : String?
 	var copyright : String?
 	var num_results : Int?
-	var results : [Results]?
+	var results : [Article]?
 
 	enum CodingKeys: String, CodingKey {
 		case status = "status"
@@ -38,7 +38,7 @@ class FetchMostViewedResult : NSObject, Codable {
 		status = try values.decodeIfPresent(String.self, forKey: .status)
 		copyright = try values.decodeIfPresent(String.self, forKey: .copyright)
 		num_results = try values.decodeIfPresent(Int.self, forKey: .num_results)
-		results = try values.decodeIfPresent([Results].self, forKey: .results)
+		results = try values.decodeIfPresent([Article].self, forKey: .results)
 	}
 
 }

@@ -13,9 +13,10 @@ import Foundation
     var writer: String!
     var date: String!
     var imageUrl: String?
-    var articleUrl: String?
-
+    var article: Article?
+    
     override init() {
         super.init()
     }
 }
+

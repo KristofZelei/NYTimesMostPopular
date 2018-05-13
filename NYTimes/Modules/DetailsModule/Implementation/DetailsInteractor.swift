@@ -14,4 +14,8 @@ class DetailsInteractor: BaseInteractor, DetailsInteractorProtocol {
         return try! getLastPresenter(byProtocol: DetailsPresenterProtocol.self) as! DetailsPresenterProtocol
     }
 
+    deinit {
+        self.presenterContainer.removeAll()
+    }
+    
 }

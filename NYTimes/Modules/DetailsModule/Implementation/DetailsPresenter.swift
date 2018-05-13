@@ -12,6 +12,10 @@ class DetailsPresenter: BasePresenter, DetailsPresenterProtocol {
 
     var detailsViewController: DetailsViewControllerProtocol {
         return viewController as! DetailsViewControllerProtocol
-    }    
+    }
+    
+    deinit {
+        viewController = nil
+    }
   
 }

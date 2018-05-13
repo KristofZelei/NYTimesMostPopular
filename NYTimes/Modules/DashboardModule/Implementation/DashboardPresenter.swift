@@ -13,19 +13,23 @@ class DashboardPresenter : BasePresenter, DashboardPresenterProtocol {
         return viewController as! DashboardViewControllerProtocol
     }
 
-    func presentMostViewedResults(_ results: [Results]) {
+    func presentMostViewedResults(_ results: [Article]) {
         let configurations = results.map { (i) -> MostViewedCellConfiguration in
             let config = MostViewedCellConfiguration()
             config.date = i.published_date
             config.title = i.title
             config.writer = i.byline
-            config.articleUrl = i.url
+            config.article = i
             if let media = i.media, !media.isEmpty, let metaData = media[0].mediaMetadata, !metaData.isEmpty  {
                 config.imageUrl = metaData[0].url                
             }
             return config
         }
         dashboardViewController.showMostViewed(configurations)
+    }
+    
+    deinit {
+        viewController = nil
     }
 
 }

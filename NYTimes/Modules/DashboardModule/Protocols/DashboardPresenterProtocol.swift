@@ -9,5 +9,5 @@
 import Foundation
 
 @objc protocol DashboardPresenterProtocol : BasePresenterProtocol {
-    func presentMostViewedResults(_ results: [Results])
+    func presentMostViewedResults(_ results: [Article])
 }

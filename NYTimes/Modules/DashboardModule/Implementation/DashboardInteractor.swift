@@ -19,18 +19,23 @@ class DashboardInteractor : BaseInteractor, DashboardInteractorProtocol {
     }
 
     // MARK: InteractorProtocol
-    func fetchNextBlock(with offset: Int) {    
+    func fetchNextBlock(with offset: Int) {
+        weak var weakSelf = self
         communicationService.fetchMostViewed(offset: offset)  { (result) in
             guard let serverResponse = result?.results else {
                 return
             }
            
-            self.getDashboardPresenter().presentMostViewedResults(serverResponse)
+            weakSelf?.getDashboardPresenter().presentMostViewedResults(serverResponse)
         }
     }
     
     // MARK: Methods
     func getDashboardPresenter() -> DashboardPresenterProtocol {
         return try! getLastPresenter(byProtocol: DashboardPresenterProtocol.self) as! DashboardPresenterProtocol
+    }
+    
+    deinit {
+        self.presenterContainer.removeAll()
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 
 class MostViewedCell: UITableViewCell {
-
+    
     var articleImage: UIImageView!
     var title : UILabel!
     var writer : UILabel!
@@ -34,7 +34,7 @@ class MostViewedCell: UITableViewCell {
         initSubviews()
         addSubviews()
     }
-
+    
     // MARK: ctor
     init(configuration: MostViewedCellConfiguration, style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -42,11 +42,11 @@ class MostViewedCell: UITableViewCell {
         addSubviews()
         self.configuration = configuration
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: Subview inits
     private func initSubviews() {
         title = UILabel()
@@ -56,7 +56,7 @@ class MostViewedCell: UITableViewCell {
         writer = UILabel()
         nextIcon = UIImageView()
     }
-
+    
     private func addSubviews() {
         addSubview(articleImage)
         addSubview(writer)
@@ -65,7 +65,7 @@ class MostViewedCell: UITableViewCell {
         addSubview(dateText)
         addSubview(nextIcon)
     }
-
+    
     // MARK: Configuration methods
     private func configureImageView() {
         articleImage.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +75,7 @@ class MostViewedCell: UITableViewCell {
         if let imageURL = configuration.imageUrl, let url = URL(string: imageURL) {
             articleImage.af_setImage(withURL: url)
         }
-      
+        
         NSLayoutConstraint.activate([
             articleImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             articleImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
@@ -83,7 +83,7 @@ class MostViewedCell: UITableViewCell {
             articleImage.heightAnchor.constraint(equalToConstant: 40)
             ])
     }
-
+    
     private func configureDateIcon() {
         let templateImage = UIImage(named:"CalendarIcon")?.withRenderingMode(.alwaysTemplate)
         dateIcon.contentMode = .scaleAspectFill
@@ -107,14 +107,14 @@ class MostViewedCell: UITableViewCell {
         dateText.text = configuration.date
         dateText.font = UIFont.systemFont(ofSize: 12.0)
         dateText.textColor = AppConstant.AppGrayTextColor
-
+        
         NSLayoutConstraint.activate([
             dateText.centerYAnchor.constraint(equalTo: dateIcon.centerYAnchor),
             dateText.widthAnchor.constraint(equalToConstant: 70),
             dateText.leadingAnchor.constraint(equalTo: dateIcon.trailingAnchor, constant: 5)
             ])
     }
-
+    
     private func configureTitleLabel() {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textColor = UIColor.black
@@ -122,14 +122,14 @@ class MostViewedCell: UITableViewCell {
         title.text = configuration.title
         title.numberOfLines = 2
         title.font = UIFont.systemFont(ofSize: 15.0)
-
+        
         NSLayoutConstraint.activate([
             title.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.64),
             title.leadingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: 10),
             title.bottomAnchor.constraint(equalTo: centerYAnchor, constant: 5)
             ])
     }
-
+    
     private func configureWriterLabel() {
         writer.translatesAutoresizingMaskIntoConstraints = false
         writer.textAlignment = .right
@@ -138,7 +138,7 @@ class MostViewedCell: UITableViewCell {
         writer.numberOfLines = 2
         writer.textColor = AppConstant.AppGrayTextColor
         writer.font = UIFont.systemFont(ofSize: 12.0)
-
+        
         NSLayoutConstraint.activate([
             writer.leadingAnchor.constraint(equalTo: dateText.trailingAnchor, constant: 0),
             writer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
@@ -160,3 +160,4 @@ class MostViewedCell: UITableViewCell {
             ])
     }
 }
+
