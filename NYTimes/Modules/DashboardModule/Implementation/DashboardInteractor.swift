@@ -22,7 +22,7 @@ class DashboardInteractor : BaseInteractor, DashboardInteractorProtocol {
     func fetchNextBlock(with offset: Int) {
         weak var weakSelf = self
         communicationService.fetchMostViewed(offset: offset)  { (result) in
-            guard let serverResponse = result?.results else {
+            guard let serverResponse = result?.results, weakSelf != nil else {
                 return
             }
            
