@@ -51,7 +51,9 @@ class DashboardViewController : BaseViewController, DashboardViewControllerProto
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.interactor = nil
+        if isMovingFromParentViewController {
+            self.interactor = nil
+        }
     }
     
     // MARK: Methods
@@ -84,7 +86,7 @@ class DashboardViewController : BaseViewController, DashboardViewControllerProto
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        navigationController?.pushViewController(DetailsViewController(withArticle: configurations[indexPath.row].article!), animated: true)
+        navigationController?.pushViewController(DetailsViewController(withArticle: configurations[indexPath.row].article!), animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

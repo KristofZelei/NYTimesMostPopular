@@ -131,7 +131,9 @@ class DetailsViewController: BaseViewController, DetailsViewControllerProtocol {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.interactor = nil
+        if isMovingFromParentViewController {
+            self.interactor = nil
+        }
     }
     
     // MARK: Constraints
